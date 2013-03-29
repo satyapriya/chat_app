@@ -1,0 +1,24 @@
+<h1>Listing articles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Author</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= link_to article.name, article %></td>
+    <td>By:(<%= article.author %>)</td>
+    <td><%#= article.body %></td>
+    <td><%= link_to 'Edit', edit_article_path(article), :class=>"btn btn-primary",:method=>"get" %></td>
+    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger"%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= button_to 'New Article', new_article_path, :class=>"btn btn-primary",:method=>"get" %>
